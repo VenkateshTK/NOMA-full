@@ -26,7 +26,7 @@ empty_particle.best.cost = [];
 
 particle = repmat(empty_particle,npop,1);
 
-globalbest.cost = inf;
+globalbest.cost = -inf;
 
 for i = 1:npop
     particle(i).position = unifrnd(varmin,varmax,varsize);
@@ -35,7 +35,7 @@ for i = 1:npop
     particle(i).best.position = particle(i).position;
     particle(i).best.cost = particle(i).cost;
     
-    if particle(i).best.cost < globalbest.cost
+    if particle(i).best.cost > globalbest.cost
         globalbest = particle(i).best;
     end
     
@@ -55,11 +55,11 @@ for it = 1:maxit
         
         particle(i).cost = costfunction(particle(i).position);
         
-        if particle(i).cost < particle(i).best.cost
+        if particle(i).cost > particle(i).best.cost
             particle(i).best.position = particle(i).position;
             particle(i).best.cost = particle(i).cost;
             % Update Global Best
-            if particle(i).best.cost < globalbest.cost
+            if particle(i).best.cost > globalbest.cost
                 globalbest = particle(i).best;
             end            
         end
@@ -81,7 +81,6 @@ semilogy(bestcost,'LineWidth',2);
 xlabel('Iteration');
 ylabel('best cost');
 grid on;
-
 
 function z= costfunction(x)
     z = sum(x.^2);
