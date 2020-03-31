@@ -1,5 +1,6 @@
 clc;
 clear;
+close all;
 
 nvar = 5;
 varsize =[1 nvar];
