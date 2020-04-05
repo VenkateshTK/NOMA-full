@@ -1,9 +1,11 @@
-function z= costfunction(p)
+function z= costfunction(p,hx)
     
-    h=[2,4,3,1];
+    h=[hx(2),hx(4),hx(3),hx(1)];
+    
     %h=[4,16000,9000,1000];
     %p_total = 10;
     %p = x.*p_total;
+    
     c = [];
     
     c(1) = log2(1+(h(1)*p(1)/(h(1)*p(2)+h(1)*p(3)+1)));
