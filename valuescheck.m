@@ -1,7 +1,11 @@
-function z= valuescheck(p)
-    h=[2,4,3,1];
-    
+function z= valuescheck(x)
+    %h=[2,4,3,1];
+    h=[4,16,9,1000];
     c = [];
+    
+    p_total = 1;
+    p = x.*p_total;
+    
     c(1) = log2(1+(h(1)*p(1)/(h(1)*p(2)+h(1)*p(3)+1)));
     c(2) = log2(1+h(2)*p(2));
     c(3) = log2(1+(h(3)*p(3)/(h(3)*p(2)+1)));

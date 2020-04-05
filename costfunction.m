@@ -1,7 +1,11 @@
 function z= costfunction(p)
-    h=[2,4,3,1];
     
+    h=[2,4,3,1];
+    %h=[4,16000,9000,1000];
+    %p_total = 10;
+    %p = x.*p_total;
     c = [];
+    
     c(1) = log2(1+(h(1)*p(1)/(h(1)*p(2)+h(1)*p(3)+1)));
     c(2) = log2(1+h(2)*p(2));
     c(3) = log2(1+(h(3)*p(3)/(h(3)*p(2)+1)));
@@ -24,6 +28,26 @@ function z= costfunction(p)
         end
     end
     
-    penalty = 10000;
-    z = c(1)+c(2)+c(3)+c(4) + penalty*sum(c_pen) -0.01*sum(p);
+  
+    x_pen = 0;
+    if sum(p)>=1
+        x_pen = 1;
+    end
+    
+    if sum(p)<=1 
+        x_pen = 1;
+    end
+    
+    if sum(p)==1
+        x_pen = 3;
+    end
+    
+    
+    c_penalty = 1000;
+    x_penalty = 2000;
+    
+    %z = c(1)+c(2)+c(3)+c(4)+c_penalty*sum(c_pen)+x_pen*x_penalty;
+    %z = x_pen*x_penalty;
+    %z = c_penalty*sum(c_pen)+x_pen*x_penalty;
+    z = c(1)+c(2)+c(3)+c(4)+c_penalty*sum(c_pen);
 end
