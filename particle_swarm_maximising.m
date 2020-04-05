@@ -3,7 +3,7 @@ clear;
 
 total_power= zeros(1000 ,1);
 
-for vmax = 100:0.5:100;
+for vmax = 500:0.5:500;
     nvar = 4;
     varsize =[1 nvar];
     varmin = 0;
@@ -15,7 +15,7 @@ for vmax = 100:0.5:100;
     phi2 = 2.05;
     phi = phi1+phi2;
     chi = 2*kappa/abs(2-phi-sqrt(phi^2-4*phi));
-    npop = 250;
+    npop = 1000;
     w= chi;
     wdamp = 0.99;
     c1 = phi1*chi;
@@ -36,7 +36,7 @@ for vmax = 100:0.5:100;
     for i = 1:npop
         particle(i).position = unifrnd(varmin,varmax,varsize);
         particle(i).velocity = zeros(varsize);
-        particle(i).cost = costfunction(particle(i).position);
+        particle(i).cost = costfunction1(particle(i).position);
         particle(i).best.position = particle(i).position;
         particle(i).best.cost = particle(i).cost;
 
@@ -62,7 +62,7 @@ for vmax = 100:0.5:100;
             particle(i).position = max(particle(i).position, varmin);
             particle(i).position = min(particle(i).position, varmax);
 
-            particle(i).cost = costfunction(particle(i).position);
+            particle(i).cost = costfunction1(particle(i).position);
 
             if particle(i).cost > particle(i).best.cost
                 particle(i).best.position = particle(i).position;

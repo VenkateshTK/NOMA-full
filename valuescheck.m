@@ -4,7 +4,7 @@ function z= valuescheck(x)
     c = [];
     
     p_total = 1;
-    p = x.*p_total;
+    p = x./100;
     
     c(1) = log2(1+(h(1)*p(1)/(h(1)*p(2)+h(1)*p(3)+1)));
     c(2) = log2(1+h(2)*p(2));

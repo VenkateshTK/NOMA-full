@@ -1,10 +1,10 @@
-function z= costfunction(p,hx)
+function z= costfunction1(p)
     
-    h=[hx(2),hx(4),hx(3),hx(1)];
+    %h=[hx(2),hx(4),hx(3),hx(1)];
     
-    %h=[4,16000,9000,1000];
+    h=[2,4,3,1];
     %p_total = 10;
-    %p = p./100;
+    p = p./100;
     
     c = [];
     
