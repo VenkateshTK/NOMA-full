@@ -6,6 +6,7 @@ dataset = [];
 s=0;
 
 %1 -100
+%100 -200 try
 
 for a = 1 : 100
     r = 1 + (4)*rand(4,1);
@@ -15,7 +16,7 @@ for a = 1 : 100
     
     vmax = 400;   
 
-    for j = 1 : (length(power_tot)+1) 
+    for j = 1 : (length(power_tot)) 
         nvar = 4;
         varsize =[1 nvar];
         varmin = 0.000000000001;
@@ -86,7 +87,7 @@ for a = 1 : 100
             bestcost(it) = globalbest.cost;
             %w = w*wdamp;
         end
-        disp(['Iteration' num2str(it) ': best cost = ' num2str(bestcost(it)) ' power =' num2str(sum(globalbest.position))]);
+        disp([ num2str(a) '- Iteration' num2str(it) ': best cost = ' num2str(bestcost(it)) ' power =' num2str(sum(globalbest.position))]);
         s = s+1;
 
 
@@ -107,7 +108,6 @@ for a = 1 : 100
         dataset(s).channel = valuescheck(globalbest.position,h);
 
         total_power(s) = sum(globalbest.position);
-        total_power(1)/100;
 
     end
 end
