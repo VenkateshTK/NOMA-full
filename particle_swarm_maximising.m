@@ -3,7 +3,8 @@ clear;
 
 total_power= zeros(1000 ,1);
 
-for vmax = 500:0.5:500;
+v=3
+for vmax = v:0.5:v;
     nvar = 4;
     varsize =[1 nvar];
     varmin = 0;

@@ -4,7 +4,7 @@ function z= costfunction(p,hx)
     
     %h=[4,16000,9000,1000];
     %p_total = 10;
-    %p = p./100;
+    p = p./100;
     
     c = [];
     

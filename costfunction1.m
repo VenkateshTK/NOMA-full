@@ -3,8 +3,8 @@ function z= costfunction1(p)
     %h=[hx(2),hx(4),hx(3),hx(1)];
     
     h=[2,4,3,1];
-    %p_total = 10;
-    p = p./100;
+    
+    %p = p./10;
     
     c = [];
     

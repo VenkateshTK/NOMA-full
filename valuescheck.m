@@ -1,6 +1,8 @@
-function z= valuescheck(x)
+function z= valuescheck(x,hx)
+    
+    h=[hx(2),hx(4),hx(3),hx(1)];
     %h=[2,4,3,1];
-    h=[4,16,9,1000];
+   % h=[4,16,9,1];
     c = [];
     
     p_total = 1;
@@ -15,9 +17,9 @@ function z= valuescheck(x)
     c(7) = log2(1+(h(2)*p(3)/(h(2)*p(2)+1)));
     c(8) = log2(1+(h(2)*p(4)/(h(2)*p(3)+h(2)*p(2)+h(2)*p(1)+1)));
     c(9) = log2(1+(h(3)*p(4)/(h(3)*p(3)+h(3)*p(2)+h(3)*p(1)+1)));
-    c(10) = log2(1+(h(3)*p(3)/(h(3)*p(2)+1)))
+    c(10) = log2(1+(h(3)*p(3)/(h(3)*p(2)+1)));
     
-    sum(p)
+    sum(p);
     
-    z = c(1)+c(2)+c(3)+c(4);
+    z = c;
 end
