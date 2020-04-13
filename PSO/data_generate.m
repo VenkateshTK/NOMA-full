@@ -5,11 +5,6 @@ total_power= zeros(10000,1);
 dataset = [];
 s=0;
 
-%1 -100
-%100 -200 try - done
-%200 -300 try -done
-%300 - 400 try
-
 for a = 1 : 100
     r = 1 + (4)*rand(4,1);
     h = sort(r');
