@@ -4,6 +4,7 @@ clear;
 total_power= zeros(1000 ,1);
 
 v=10
+
 for vmax = v:0.5:v;
     nvar = 4;
     varsize =[1 nvar];
@@ -58,7 +59,6 @@ for vmax = v:0.5:v;
 
 
             particle(i).position =  particle(i).position + particle(i).velocity;
-
 
             particle(i).position = max(particle(i).position, varmin);
             particle(i).position = min(particle(i).position, varmax);

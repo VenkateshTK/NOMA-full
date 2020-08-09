@@ -6,8 +6,10 @@ dataset = [];
 s=0;
 
 for a = 1 : 100
-    r = 1 + (4)*rand(4,1);
+    r = [abs(1*randn()),abs(2*randn()),abs(3*randn()),abs(4*randn())];
+    r
     h = sort(r');
+    h = h.^2;
     
     power_tot = [795,891,1000,1122,1258,1412,1584,1778,1995,2238,2511,2818,3162,400];
     
@@ -19,7 +21,7 @@ for a = 1 : 100
         varmin = 0.000000000001;
         varmax = vmax;
 
-        maxit =400;
+        maxit = 400;
         kappa = 1;
         phi1 = 2.05;
         phi2 = 2.05;
@@ -85,27 +87,28 @@ for a = 1 : 100
             %w = w*wdamp;
         end
         disp([ num2str(a) '- Iteration' num2str(it) ': best cost = ' num2str(bestcost(it)) ' power =' num2str(sum(globalbest.position))]);
-        s = s+1;
-
+        
 
         vmax = vmax + 0.5*(power_tot(j)-sum(globalbest.position));  
 
-        dataset(s).h1 = h(1);
-        dataset(s).h2 = h(2);
-        dataset(s).h3 = h(3);
-        dataset(s).h4 = h(4);
-        
-        dataset(s).power1 = globalbest.position(1)/100;
-        dataset(s).power2 = globalbest.position(2)/100;
-        dataset(s).power3 = globalbest.position(3)/100;
-        dataset(s).power4 = globalbest.position(4)/100;
-        
-        dataset(s).total = sum(globalbest.position)/100;
-        dataset(s).check = costfunction(globalbest.position,h);
-        dataset(s).channel = valuescheck(globalbest.position,h);
+        if costfunction(globalbest.position,h) >= 10000
+            s = s+1;
+            dataset(s).h1 = h(1);
+            dataset(s).h2 = h(2);
+            dataset(s).h3 = h(3);
+            dataset(s).h4 = h(4);
 
-        total_power(s) = sum(globalbest.position);
+            dataset(s).power1 = globalbest.position(1)/100;
+            dataset(s).power2 = globalbest.position(2)/100;
+            dataset(s).power3 = globalbest.position(3)/100;
+            dataset(s).power4 = globalbest.position(4)/100;
 
+            dataset(s).total = sum(globalbest.position)/100;
+            dataset(s).check = costfunction(globalbest.position,h);
+            dataset(s).channel = valuescheck(globalbest.position,h);
+
+            total_power(s) = sum(globalbest.position);
+        end
     end
 end
 
